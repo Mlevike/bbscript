@@ -1,0 +1,347 @@
+#!/bin/bash
+
+#
+#A protokoll leirasa (http://alumni.media.mit.edu/~aggelos/papers/alphasign.pdf):
+#
+# <NUL><NUL><NUL><NUL><NUL>         <SOH>                          <Z>                                               <00>                            <STX>
+# |Csomagszinkronizacios karakterek|Feljec kezdetet jelzo karakter|Fenyujasg tipusat megado karakter (Z ="All signs)|Fenyujsag cime (00 = Broadcast)|Parancs kezdetet jelzo karakter, mindig ez van a parancsblokkok elott|
+#
+#  <A>                                   <A>                                                          <ESC>                     <' '>
+# |Parancsot megado karakter (A = Write)|A memoriarekeszt megado karakter (A-Z memoriarekesz letezik)|A mod mezo kezdetet jelzi|Szovegpozicio beallitasa, jelenleg nem relevans, de kotelezo beirni (' ' = Fuggolegesen kozepre helyezett)|
+#
+#  <b>                     <0x1C>                       <1>         <UZENET> <EOT>
+# |Mod megadasa (b = HOLD)|Szinbeallitas kezdemenyezese|(1 = Piros)|Uzenet  |A kommunikacio vegenek jelezese|
+
+#Incializalas
+color=C
+mode=o
+speed='\x18'
+animation=''
+
+#Bemenet ellenorzese, argumnetumok beallitasa
+#Megfelelo szamu argumentum ellenorzese
+if [ "$#" -lt 2 ]; then
+	echo "HIBA: Hibas bemeneti parameterek! (Hianyzik a port vagy az uzenet)" >&2
+else
+	#Az argumnetumok atvetelehez szukseges valtozok
+	argumentID=1
+	toSet=""
+	#Argumentumok vegigjarasa
+	for var in "$@"
+		do
+		if [ "$argumentID" -gt 2 ]; then
+			if [ "$toSet" == "C" ]; then
+				#Szinkod alapjan beallitjuk a &color valtozot!
+				case $var in
+					#Piros - RED
+					RED)
+					color=1
+					;;
+					#Zold - GRN
+					GRN)
+					color=2
+					;;
+					#Borostyan - AMB
+					AMB)
+					color=3
+					;;
+					#Halvany piros - LRD
+					LRD)
+					color=4
+					;;
+					#Halvany zold - LGN
+					LGN)
+					color=5
+					;;
+					#Barna - BRN
+					BRN)
+					color=6
+					;;
+					#Narancs - ORG
+					ORG)
+					color=7
+					;;
+					#Citromsarga - YEL
+					YEL)
+					color=8
+					;;
+					#Sivarvany 1 - RB1
+					RB1)
+					color=9
+					;;
+					#Szivarvany 2 - RB2
+					RB2)
+					color=A
+					;;
+					#Kevert szinek - MIX
+					MIX)
+					color=B
+					;;
+					#Automatikus szinvalasztas - ACL (alapertelmezett)
+					ACL)
+					color=C
+					;;
+					#Alapertelmezett ag, hibak kijelzesere
+					*)
+					echo "FIGYELMEZTETES: Hibas vagy nem tamogatott szinkod lett megadva, az alapertelmezett szin lesz beallitva! (ACL)" >&2
+				esac
+				#toSet valtozo alapertekre allitasa
+				toSet=''
+			fi
+			if [ "$toSet" == "M" ]; then
+				#Mod azonosito alapjan beallitjuk a $mode valtozot
+				case $var in
+					#Rotate - ROT
+					ROT)
+					mode=a
+					;;
+					#Hold - HLD
+					HLD)
+					mode=b
+					;;
+					#Flash - FLS
+					FLS)
+					mode=c
+					;;
+					#Roll up - RLUP
+					RLUP)
+					mode=e
+					;;
+					#Roll down - RLDN
+					RLDN)
+					mode=f
+					;;
+					#Roll left - RLL
+					RLL)
+					mode=g
+					;;
+					#Roll right - RLR
+					RLR)
+					mode=h
+					;;
+					#Wipe up - WIUP
+					WIUP)
+					mode=i
+					;;
+					#Wipe down - WIDN
+					WIDN)
+					mode=j
+					;;
+					#Wipe left - WIL
+					WIL)
+					mode=k
+					;;
+					#Wipe right - WIR
+					WIR)
+					mode=l
+					;;
+					#Scroll - SCR
+					SCR)
+					mode=m
+					;;
+					#Automode - AUT (alapertelmezett)
+					AUT)
+					mode=o
+					;;
+					#Roll in - RLIN
+					RLIN)
+					mode=p
+					;;
+					#Roll out - RLOT
+					RLOT)
+					mode=q
+					;;
+					#Wipe in - WIIN
+					WIIN)
+					mode=r
+					;;
+					#Wipe out - WIOT
+					WIOT)
+					mode=s
+					;;
+					#Condensed rotate - CRT
+					CRT)
+					mode=t
+					;;
+					#Special modes
+					#Twinkle - SPC0
+					SPC0)
+					mode=n0
+					;;
+					#Sparkle - SPC1
+					SPC1)
+					mode=n1
+					;;
+					#Show - SPC2
+					SPC2)
+					mode=n2
+					;;
+					#Interlock - SPC3
+					SPC3)
+					mode=n3
+					;;
+					#Switch - SPC4
+					SPC4)
+					mode=n4
+					;;
+					#Cycle colors - SPC5
+					SPC5)
+					mode=n5
+					;;
+					#Spray - SPC6
+					SPC6)
+					mode=n6
+					;;
+					#Starburst - SPC7
+					SPC7)
+					mode=n7
+					;;
+					#Welcome - SPC8
+					SPC8)
+					mode=n8
+					;;
+					#Alapertelmezett ag, hibak kijelzesehez
+					*)
+					echo "FIGYELMEZTETES: Hibas vagy nem tamogatott mod lett megadva, az alapertelmezett mod lesz beallitva! (AUT)" >&2
+				esac
+				#toSet valtozo alapertekre allitsa
+				toSet=''
+			fi
+			if [ "$toSet" == "S" ]; then
+				#Sebesseg ertek alapjan beallitjuk a $speed valtozot
+				case $var in
+					#1
+					'1')
+					speed='\x15'
+					;;
+					#2
+					'2')
+					speed='\x16'
+					;;
+					#3
+					'3')
+					speed='\x17'
+					;;
+					#4 (alapertelmezett)
+					'4')
+					speed='\x18'
+					;;
+					#5
+					'5')
+					speed='\x19'
+					;;
+					#Alapertelmezett ag, hibak kijelzesehez
+                                        *)
+                                        echo "FIGYELMEZTETES: Hibas vagy nem tamogatott sebbesseg lett megadva, az alapertelmezett sebbesseg lesz beallitva! (4)" >&2
+				esac
+				#toSet valtozo alapertekre allitasa
+				toSet=''
+			fi
+			if [ "$toSet" == "A" ]; then
+				#Animacio azonosito alapjan beallitjuk a $animation valtozot
+				case $var in
+					#Slot machine animation - SPC9
+					SPC9)
+					animation=n9
+					;;
+					#News flash animation - SPCA
+					SPCA)
+					animation=nA
+					;;
+					#Trumbet animation - SPCB
+					SPCB)
+					animation=nB
+					;;
+					#Thank you - SPCS
+					SPCS)
+					animation=nS
+					;;
+					#No smoking - SPCU
+					SPCU)
+					animation=nU
+					;;
+					#Don't drink & drive - SPCV
+					SPCV)
+					animation=nV
+					;;
+					#Fish animation - SPCW
+					SPCW)
+					animation=nW
+					;;
+					#Fireworks - SPCX
+					SPCX)
+					animation=nX
+					;;
+					#Baloon animation - SPCY
+					SPCY)
+					animation=nY
+					;;
+					#Cherry bomb - SPCZ
+					SPCZ)
+					animation=nZ
+					;;
+					#Alapertelmezett ag, hibak kijelzesehez
+                                        *)
+                                        echo "FIGYELMEZTETES: Hibas vagy nem tamogatott animacio lett megadva, az animacio nem fog megjelenni!" >&2
+				esac
+				#toSet valtozo alapertekre allitasa
+				toSet=''
+			fi
+			if [ "$var" == "-C" ] || [ "$var" == "-c" ] || [ "$var" == "--color" ] || [ "$var" == "--COLOR" ]; then
+				# -C parameter eseten toSet=C
+				toSet="C"
+			fi
+			if [ "$var" == "-M" ] || [ "$var" == "-m" ] || [ "$var" == "--MODE" ] || [ "$var" == "--mode" ]; then
+				# -M parameter eseten toSet=M
+				toSet="M"
+			fi
+			if [ "$var" == "-S" ] || [ "$var" == "-s" ] ||[ "$var" == "--SPEED" ] ||[ "$var" == "--speed" ]; then
+				# -S parameter eseten toSet=S
+				toSet="S"
+			fi
+			if [ "$var" == "-A" ] || [ "$var" == "-a" ] ||[ "$var" == "--ANIMATION" ] ||[ "$var" == "--animation" ]; then
+				# -A parameter eseten toSet=A
+                                toSet="A"
+			fi
+		fi
+		#Az aktualis argument sorszamat tartalmazo valtozo novelese
+		argumentID=$(( $argumentID + 1 ))
+		done
+#Port es uzenetvaltozok beallitasa
+port=$1
+message=$2
+
+#Uzenet Atkuldese
+#Kommunikacio szinkronizalasa
+printf '\x00\x00\x00\x00\x00' >> $port
+#Feljec kezdete
+printf '\x01' >> $port
+#Fenyujsag tipusanak megadasa
+printf 'Z' >> $port
+#Fenyujsag cimenek megadasa
+printf '00' >> $port
+#Parancsresz kezdete
+printf '\x02' >> $port
+#Muvelet megadasa
+printf 'A' >> $port
+#Memoriarekesz megadasa
+printf 'A' >> $port
+#Animacio beallitasa
+printf '\x1b' >> $port
+printf ' ' >> $port
+echo $animation >> $port
+#Mod megadasa
+printf '\x1b' >> $port
+printf ' ' >> $port
+printf $mode >> $port
+#Sebesseg beallitasa
+printf $speed >> $port
+#Szin beallitasa
+printf '\x1c' >> $port
+printf $color >> $port
+#Uzenet atkuldese
+echo $message >> $port
+#Kommunikacio lezarasa
+printf '\x04' >> $port
+fi
+
