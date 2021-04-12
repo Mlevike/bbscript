@@ -234,7 +234,7 @@ else
                                         *)
                                         echo "FIGYELMEZTETES: Hibas vagy nem tamogatott sebbesseg lett megadva, az alapertelmezett sebbesseg lesz beallitva! (4)" >&2
 				esac
-				#toSet valtozo alapertekre allitasa
+q				#toSet valtozo alapertekre allitasa
 				toSet=''
 			fi
 			if [ "$toSet" == "A" ]; then
@@ -327,10 +327,11 @@ printf 'A' >> $port
 #Memoriarekesz megadasa
 printf 'A' >> $port
 #Animacio beallitasa
-#printf '\x1b' >> $port
-#printf ' ' >> $port
-#Animaciot javitani kell
-#echo $animation >> $port
+if [[ $animation != '' ]]; then
+	printf '\x1b' >> $port
+	printf ' ' >> $port
+	echo $animation >> $port
+fi
 #Mod megadasa
 printf '\x1b' >> $port
 printf ' ' >> $port
