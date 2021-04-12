@@ -327,9 +327,10 @@ printf 'A' >> $port
 #Memoriarekesz megadasa
 printf 'A' >> $port
 #Animacio beallitasa
-printf '\x1b' >> $port
-printf ' ' >> $port
-echo $animation >> $port
+#printf '\x1b' >> $port
+#printf ' ' >> $port
+#Animaciot javitani kell
+#echo $animation >> $port
 #Mod megadasa
 printf '\x1b' >> $port
 printf ' ' >> $port
