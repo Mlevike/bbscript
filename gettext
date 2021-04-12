@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "Kerem a szoveget: "
-read text
-~/bbscript/bbscript "/dev/ttyUSB0" "$text"
