@@ -17,6 +17,7 @@ color=C
 mode=o
 speed='\x18'
 animation=''
+font='3'
 
 #Bemenet ellenorzese, argumnetumok beallitasa
 #Megfelelo szamu argumentum ellenorzese
@@ -287,7 +288,73 @@ q				#toSet valtozo alapertekre allitasa
 				#toSet valtozo alapertekre allitasa
 				toSet=''
 			fi
-			if [ "$var" == "-C" ] || [ "$var" == "-c" ] || [ "$var" == "--color" ] || [ "$var" == "--COLOR" ]; then
+			if [ "$toSet" == "F" ]; then
+				#Betutipus alapjan beallitjuk a $font valtozot
+				case $var in
+					#SS5
+					SS5)
+					font='1'
+					;;
+					#ST5
+					ST5)
+					font='2'
+					;;
+					#SS7
+					SS7)
+					font='3'
+					;;
+					#ST7
+					ST7)
+					font='4'
+					;;
+					#SRF
+					SRF)
+					font='5'
+					;;
+					#STF
+					STF)
+					font='6'
+					;;
+					#SDS
+					SDS)
+					font='7'
+					;;
+					#WSF
+					WSF)
+					font='8'
+					;;
+					#WS7
+					WS7)
+					font='9'
+					;;
+					#SDF
+					SDF)
+					font=':'
+					;;
+					#WD5
+					WD5)
+					font=';'
+					;;
+					#WD7
+					WD7)
+					font='<'
+					;;
+					#WSF
+					WSF)
+					font='='
+					;;
+					#WS5
+					WS5)
+					font='>'
+					;;
+					#Alapertelmezett ag, hibak kijelzesehez
+                                        *)
+                                        echo "FIGYELMEZTETES: Hibas vagy nem tamogatott betutipus lett megadva, az alapertelmezett betutipus lesz beallitva! (SS7)" >&2
+				esac
+				#toSet valtozo alapertekre allitasa
+				toSet=''
+			fi
+			if [ "$var" == "-C" ] || [ "$var" == "-c" ] || [ "$var" == "--COLOR" ] || [ "$var" == "--color" ]; then
 				# -C parameter eseten toSet=C
 				toSet="C"
 			fi
@@ -303,6 +370,11 @@ q				#toSet valtozo alapertekre allitasa
 				# -A parameter eseten toSet=A
                                 toSet="A"
 			fi
+			if [ "$var" == "-F" ] || [ "$var" == "-f" ] ||[ "$var" == "--FONT" ] ||[ "$var" == "--font" ]; then
+                                # -F parameter eseten toSet=F
+                                toSet="F"
+                        fi
+
 		fi
 		#Az aktualis argument sorszamat tartalmazo valtozo novelese
 		argumentID=$(( $argumentID + 1 ))
@@ -341,6 +413,9 @@ printf $speed >> $port
 #Szin beallitasa
 printf '\x1c' >> $port
 printf $color >> $port
+#Betutipus beallitasa
+printf '\x1a' >> $port
+printf $font >> $port
 #Uzenet atkuldese
 echo $message >> $port
 #Kommunikacio lezarasa
