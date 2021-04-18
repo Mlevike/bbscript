@@ -14,3 +14,5 @@ Lehetséges paraméterek:
 -m -M --mode  --SPEED : Mód beállítása
 
 -a -A --animation --ANIMATION : Animáció beillesztése a szöveg elé 
+
+-f -F --font --FONT : Betűtípus beállítása
