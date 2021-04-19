@@ -1,5 +1,6 @@
 # bbscript
-bbscript - Egy egyszerű szkript szöveg BetaBrite típusú fényújságra küldéséhez
+
+bbscript - Egy egyszerű szkript szöveg BetaBrite 1036 típusú fényújságra küldéséhez.
 
 Szintaktika:
 
@@ -7,7 +8,22 @@ Szintaktika:
 
 Lehetséges paraméterek:
 
--c -C --color --COLOR : Szín beállítása
+-c -C --color --COLOR [Szín]
+
+Szín beállítása, az alábbi színek lehetségesek ( A szín paraméter a három betűs azonosítót fogadja el):
+
+[RED] - Piros
+[LRD] - Halvány piros
+[GRN] - Zöld
+[LGN] - Halvány zöld
+[AMB] - Borostyán
+[BRN] - Barna
+[ORG] - Narancssárga
+[YEL] - Citromsárga
+[RB1] - Szivárvány 1
+[RB2] - Szivárvány 2
+[MIX] - Kevert színek
+[ACL] - Automata színbeállítás
 
 -s -S --speed --SPEED : Sebesség beállítása
 
