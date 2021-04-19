@@ -36,51 +36,51 @@ else
 				case $var in
 					#Piros - RED
 					RED)
-					color=1
+					color='1'
 					;;
 					#Zold - GRN
 					GRN)
-					color=2
+					color='2'
 					;;
 					#Borostyan - AMB
 					AMB)
-					color=3
+					color='3'
 					;;
 					#Halvany piros - LRD
 					LRD)
-					color=4
+					color='4'
 					;;
 					#Halvany zold - LGN
 					LGN)
-					color=5
+					color='5'
 					;;
 					#Barna - BRN
 					BRN)
-					color=6
+					color='6'
 					;;
 					#Narancs - ORG
 					ORG)
-					color=7
+					color='7'
 					;;
 					#Citromsarga - YEL
 					YEL)
-					color=8
+					color='8'
 					;;
 					#Sivarvany 1 - RB1
 					RB1)
-					color=9
+					color='9'
 					;;
 					#Szivarvany 2 - RB2
 					RB2)
-					color=A
+					color='A'
 					;;
 					#Kevert szinek - MIX
 					MIX)
-					color=B
+					color='B'
 					;;
 					#Automatikus szinvalasztas - ACL (alapertelmezett)
 					ACL)
-					color=C
+					color='C'
 					;;
 					#Alapertelmezett ag, hibak kijelzesere
 					*)
@@ -94,112 +94,112 @@ else
 				case $var in
 					#Rotate - ROT
 					ROT)
-					mode=a
+					mode='a'
 					;;
 					#Hold - HLD
 					HLD)
-					mode=b
+					mode='b'
 					;;
 					#Flash - FLS
 					FLS)
-					mode=c
+					mode='c'
 					;;
 					#Roll up - RLUP
 					RLUP)
-					mode=e
+					mode='e'
 					;;
 					#Roll down - RLDN
 					RLDN)
-					mode=f
+					mode='f'
 					;;
 					#Roll left - RLL
 					RLL)
-					mode=g
+					mode='g'
 					;;
 					#Roll right - RLR
 					RLR)
-					mode=h
+					mode='h'
 					;;
 					#Wipe up - WIUP
 					WIUP)
-					mode=i
+					mode='i'
 					;;
 					#Wipe down - WIDN
 					WIDN)
-					mode=j
+					mode='j'
 					;;
 					#Wipe left - WIL
 					WIL)
-					mode=k
+					mode='k'
 					;;
 					#Wipe right - WIR
 					WIR)
-					mode=l
+					mode='l'
 					;;
 					#Scroll - SCR
 					SCR)
-					mode=m
+					mode='m'
 					;;
 					#Automode - AUT (alapertelmezett)
 					AUT)
-					mode=o
+					mode='o'
 					;;
 					#Roll in - RLIN
 					RLIN)
-					mode=p
+					mode='p'
 					;;
 					#Roll out - RLOT
 					RLOT)
-					mode=q
+					mode='q'
 					;;
 					#Wipe in - WIIN
 					WIIN)
-					mode=r
+					mode='r'
 					;;
 					#Wipe out - WIOT
 					WIOT)
-					mode=s
+					mode='s'
 					;;
 					#Condensed rotate - CRT
 					CRT)
-					mode=t
+					mode='t'
 					;;
 					#Special modes
 					#Twinkle - SPC0
 					SPC0)
-					mode=n0
+					mode='n0'
 					;;
 					#Sparkle - SPC1
 					SPC1)
-					mode=n1
+					mode='n1'
 					;;
 					#Show - SPC2
 					SPC2)
-					mode=n2
+					mode='n2'
 					;;
 					#Interlock - SPC3
 					SPC3)
-					mode=n3
+					mode='n3'
 					;;
 					#Switch - SPC4
 					SPC4)
-					mode=n4
+					mode='n4'
 					;;
 					#Cycle colors - SPC5
 					SPC5)
-					mode=n5
+					mode='n5'
 					;;
 					#Spray - SPC6
 					SPC6)
-					mode=n6
+					mode='n6'
 					;;
 					#Starburst - SPC7
 					SPC7)
-					mode=n7
+					mode='n7'
 					;;
 					#Welcome - SPC8
 					SPC8)
-					mode=n8
+					mode='n8'
 					;;
 					#Alapertelmezett ag, hibak kijelzesehez
 					*)
@@ -243,43 +243,43 @@ q				#toSet valtozo alapertekre allitasa
 				case $var in
 					#Slot machine animation - SPC9
 					SPC9)
-					animation=n9
+					animation='n9'
 					;;
 					#News flash animation - SPCA
 					SPCA)
-					animation=nA
+					animation='nA'
 					;;
 					#Trumbet animation - SPCB
 					SPCB)
-					animation=nB
+					animation='nB'
 					;;
 					#Thank you - SPCS
 					SPCS)
-					animation=nS
+					animation='nS'
 					;;
 					#No smoking - SPCU
 					SPCU)
-					animation=nU
+					animation='nU'
 					;;
 					#Don't drink & drive - SPCV
 					SPCV)
-					animation=nV
+					animation='nV'
 					;;
 					#Fish animation - SPCW
 					SPCW)
-					animation=nW
+					animation='nW'
 					;;
 					#Fireworks - SPCX
 					SPCX)
-					animation=nX
+					animation='nX'
 					;;
 					#Baloon animation - SPCY
 					SPCY)
-					animation=nY
+					animation='nY'
 					;;
 					#Cherry bomb - SPCZ
 					SPCZ)
-					animation=nZ
+					animation='nZ'
 					;;
 					#Alapertelmezett ag, hibak kijelzesehez
                                         *)
@@ -356,23 +356,23 @@ q				#toSet valtozo alapertekre allitasa
 			fi
 			if [ "$var" == "-C" ] || [ "$var" == "-c" ] || [ "$var" == "--COLOR" ] || [ "$var" == "--color" ]; then
 				# -C parameter eseten toSet=C
-				toSet="C"
+				toSet='C'
 			fi
 			if [ "$var" == "-M" ] || [ "$var" == "-m" ] || [ "$var" == "--MODE" ] || [ "$var" == "--mode" ]; then
 				# -M parameter eseten toSet=M
-				toSet="M"
+				toSet='M'
 			fi
 			if [ "$var" == "-S" ] || [ "$var" == "-s" ] ||[ "$var" == "--SPEED" ] ||[ "$var" == "--speed" ]; then
 				# -S parameter eseten toSet=S
-				toSet="S"
+				toSet='S'
 			fi
 			if [ "$var" == "-A" ] || [ "$var" == "-a" ] ||[ "$var" == "--ANIMATION" ] ||[ "$var" == "--animation" ]; then
 				# -A parameter eseten toSet=A
-                                toSet="A"
+                                toSet='A'
 			fi
 			if [ "$var" == "-F" ] || [ "$var" == "-f" ] ||[ "$var" == "--FONT" ] ||[ "$var" == "--font" ]; then
                                 # -F parameter eseten toSet=F
-                                toSet="F"
+                                toSet='F'
                         fi
 
 		fi
