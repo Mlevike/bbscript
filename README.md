@@ -13,16 +13,27 @@ Lehetséges paraméterek:
 Szín beállítása, az alábbi színek lehetségesek ( A szín paraméter a három betűs azonosítót fogadja el):
 
 [RED] - Piros
+
 [LRD] - Halvány piros
+
 [GRN] - Zöld
+
 [LGN] - Halvány zöld
+
 [AMB] - Borostyán
+
 [BRN] - Barna
+
 [ORG] - Narancssárga
+
 [YEL] - Citromsárga
+
 [RB1] - Szivárvány 1
+
 [RB2] - Szivárvány 2
+
 [MIX] - Kevert színek
+
 [ACL] - Automata színbeállítás
 
 -s -S --speed --SPEED : Sebesség beállítása
