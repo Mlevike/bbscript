@@ -380,8 +380,8 @@ q				#toSet valtozo alapertekre allitasa
 		argumentID=$(( $argumentID + 1 ))
 		done
 #Port es uzenetvaltozok beallitasa
-port=$1
-message=$2
+port=$2
+message=$1
 
 #Uzenet Atkuldese
 #Kommunikacio szinkronizalasa
