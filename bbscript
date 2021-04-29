@@ -197,10 +197,6 @@ else
 					SPC7)
 					mode='n7'
 					;;
-					#Welcome - SPC8
-					SPC8)
-					mode='n8'
-					;;
 					#Alapertelmezett ag, hibak kijelzesehez
 					*)
 					echo "FIGYELMEZTETES: Hibas vagy nem tamogatott mod lett megadva, az alapertelmezett mod lesz beallitva! (AUT)" >&2
@@ -281,6 +277,10 @@ q				#toSet valtozo alapertekre allitasa
 					SPCZ)
 					animation='nZ'
 					;;
+                                        #Welcome - SPC8
+                                        SPC8)
+                                        mode='n8'
+                                        ;;
 					#Alapertelmezett ag, hibak kijelzesehez
                                         *)
                                         echo "FIGYELMEZTETES: Hibas vagy nem tamogatott animacio lett megadva, az animacio nem fog megjelenni!" >&2

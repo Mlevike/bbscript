@@ -88,6 +88,30 @@ A szöveg megjelenítési üzemmódjának beállítása, az alábbi módok lehet
 
  [WIR] - Wipe RIGHT üzemmód, a jelenlegi üzenetet balról jobbra felülírja az új üzenettel.
 
--a -A --animation --ANIMATION : Animáció beillesztése a szöveg elé 
+-a -A --animation --ANIMATION
+
+Animációt illeszt be a szöveg elé, az alábbi animációk lehetségesek:
+
+ [SPC8] - Welcome, kézírással a WELCOME üzenet jelenik meg a kijelzőn, balról jobbra kiírva.
+
+ [SPCS] - Thank you, kézírással a THANK YOU üzenet jelenik meg a kijelzőn, balról jobbra kiírva.
+
+ [SPCU] - No smoking, egy cigaretta jelenik meg, amit a NO SMOKING szimbólum vált fel.
+
+ [SPCV] - Don't drink and drive, Egy gépkocsi ütközik össze egy buborékoló koktélos pohárral, aztán ezt felváltja a PLEASE DON'T DRINK AND DRIVE üzenet.
+
+ [SPC9] - Félkarú rabló
+
+ [SPCA] - NEWS FLASH
+
+ [SPCB] - Trombita
+
+ [SPCY] - Luftballonok
+
+ [SPCW] - Halak
+
+ [SPCX] - Tűzijáték
+
+ [SPCZ] - Bombarobbanás, egy bomba jelenik meg gyújtózsinorral. A zsinór leég a bombáig, aztén a bomba felrobban.  
 
 -f -F --font --FONT : Betűtípus beállítása
