@@ -146,3 +146,8 @@ Betűtípust állítja át, az alább betűzípusok lehetségesek:
 
  [WS5] - Wide stroke five
 
+A program megíráshoz felhasznált források:
+
+ - Alpha Sign Communications Protocol Rev. E protokoll leírás (https://alumni.media.mit.edu/~aggelos/papers/alphasign.pdf)
+
+ - BetaBrite 1036 Programming Manual (https://www.manualslib.com/manual/1610476/Adaptive-Micro-Systems-Betabrite-1036.html)
