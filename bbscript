@@ -291,59 +291,59 @@ q				#toSet valtozo alapertekre allitasa
 			if [ "$toSet" == "F" ]; then
 				#Betutipus alapjan beallitjuk a $font valtozot
 				case $var in
-					#SS5
+					#SS5 - Five slim
 					SS5)
 					font='1'
 					;;
-					#ST5
+					#ST5 - Five stroke
 					ST5)
 					font='2'
 					;;
-					#SS7
+					#SS7 - Seven slim (alapertelmezett)
 					SS7)
 					font='3'
 					;;
-					#ST7
+					#ST7 - Seven stroke
 					ST7)
 					font='4'
 					;;
-					#SRF
+					#SRF - Seven slim fancy
 					SRF)
 					font='5'
 					;;
-					#STF
+					#STF - Seven stroke fancy
 					STF)
 					font='6'
 					;;
-					#SDS
+					#SDS - Seven shadow
 					SDS)
 					font='7'
 					;;
-					#WSF
+					#WSF - Wide stroke seven fancy
 					WSF)
 					font='8'
 					;;
-					#WS7
+					#WS7 - Wide stroke seven
 					WS7)
 					font='9'
 					;;
-					#SDF
+					#SDF - Seven shadow fancy
 					SDF)
 					font=':'
 					;;
-					#WD5
+					#WD5 - Five wide
 					WD5)
 					font=';'
 					;;
-					#WD7
+					#WD7 - Seven wide
 					WD7)
 					font='<'
 					;;
-					#WSF
+					#WSF - Seven fancy wide
 					WSF)
 					font='='
 					;;
-					#WS5
+					#WS5 - Wide stroke five
 					WS5)
 					font='>'
 					;;

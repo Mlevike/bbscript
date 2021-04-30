@@ -88,7 +88,7 @@ A szöveg megjelenítési üzemmódjának beállítása, az alábbi módok lehet
 
  [WIR] - Wipe RIGHT üzemmód, a jelenlegi üzenetet balról jobbra felülírja az új üzenettel.
 
--a -A --animation --ANIMATION
+-a -A --animation --ANIMATION [Animáció]
 
 Animációt illeszt be a szöveg elé, az alábbi animációk lehetségesek:
 
@@ -114,4 +114,35 @@ Animációt illeszt be a szöveg elé, az alábbi animációk lehetségesek:
 
  [SPCZ] - Bombarobbanás, egy bomba jelenik meg gyújtózsinorral. A zsinór leég a bombáig, aztén a bomba felrobban.  
 
--f -F --font --FONT : Betűtípus beállítása
+-f -F --font --FONT [Betűtípus]
+
+Betűtípust állítja át, az alább betűzípusok lehetségesek:
+
+ [SS5] - Five slim
+
+ [ST5] - Five stroke
+
+ [SS7] - Seven slim, ez az alapértelmezett.
+
+ [ST7] - Seven stroke
+
+ [SRF] - Seven slim fancy
+
+ [STF] - Seven stroke fancy
+
+ [SDS] - Seven shadow
+
+ [WSF] - Wide stroke seven fancy
+
+ [WS7] - Wide stroke seven
+
+ [SDF] - Seven shadow fancy
+
+ [WD5] - Five wide
+
+ [WD7] - Seven wide
+
+ [WSF] - Seven fancy wide
+
+ [WS5] - Wide stroke five
+
