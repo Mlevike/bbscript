@@ -383,6 +383,58 @@ else
 port=$2
 message=$1
 
+#Ekezetes betuk cserelese az uzenetben
+#Letrehozunk egy kimeneti valtozot
+output=''
+#Vegigjarjuk az uzenet karaktereit
+for (( i=0; i<${#message}; i++ )); do
+	case ${message:$i:1} in
+		#Kis betuk
+		#é
+		é)
+		output="$output\x08\x22"
+		;;
+	        #á
+                á)
+                output="$output\x08\x40"
+                ;;
+                #ű
+                ű)
+                output="$output\x08\x00"
+                ;;
+                #ú
+                ú)
+                output="$output\x08\x22"
+                ;;
+                #ő
+                ő)
+                output="$output\x08\x22"
+                ;;
+                #ö
+                ö)
+                output="$output\x08\x22"
+                ;;
+                #ü
+                ü)
+                output="$output\x08\x22"
+                ;;
+                #ó
+                ó)
+                output="$output\x08\x22"
+                ;;
+                #í
+                í)
+                output="$output\x08\x22"
+                ;;
+
+		#Alapertelmezett ag, akkor aktív ha sima ascii karakterrel megjelenitheto betut kap a case szerkezet
+		*)
+		output="$output${message:$i:1}"
+	esac
+done
+#Az uzenetet visszatoltjuk az output valtozobol a message valtozoba
+message=$output
+
 #Uzenet Atkuldese
 #Kommunikacio szinkronizalasa
 printf '\x00\x00\x00\x00\x00' >> $port
@@ -417,7 +469,7 @@ printf $color >> $port
 printf '\x1a' >> $port
 printf $font >> $port
 #Uzenet atkuldese
-echo $message >> $port
+printf $message >> $port
 #Kommunikacio lezarasa
 printf '\x04' >> $port
 fi
