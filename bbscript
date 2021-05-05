@@ -389,6 +389,43 @@ output=''
 #Vegigjarjuk az uzenet karaktereit
 for (( i=0; i<${#message}; i++ )); do
 	case ${message:$i:1} in
+		#Nagy betuk
+		#É
+                É)
+                output="$output\x08\x30"
+                ;;
+                #Á
+                Á)
+                output="$output\x08\x5A"
+                ;;
+                #Ű
+                Ű)
+                output="$output\x08\x36"
+                ;;
+                #Ú
+                Ú)
+                output="$output\x08\x36"
+                ;;
+                #Ő
+                Ő)
+                output="$output\x08\x33"
+                ;;
+                #Ö
+                Ö)
+                output="$output\x08\x43"
+                ;;
+                #Ü
+                Ü)
+                output="$output\x08\x21"
+                ;;
+		#Ó
+                Ó)
+                output="$output\x08\x42"
+                ;;
+                #Í
+                Í)
+                output="$output\x08\x41"
+                ;;
 		#Kis betuk
 		#é
 		é)
@@ -400,33 +437,32 @@ for (( i=0; i<${#message}; i++ )); do
                 ;;
                 #ű
                 ű)
-                output="$output\x08\x00"
+                output="$output\x08\x36"
                 ;;
                 #ú
                 ú)
-                output="$output\x08\x22"
+                output="$output\x08\x43"
                 ;;
                 #ő
                 ő)
-                output="$output\x08\x22"
+                output="$output\x08\x33"
                 ;;
                 #ö
                 ö)
-                output="$output\x08\x22"
+                output="$output\x08\x43"
                 ;;
                 #ü
                 ü)
-                output="$output\x08\x22"
+                output="$output\x08\x21"
                 ;;
                 #ó
                 ó)
-                output="$output\x08\x22"
+                output="$output\x08\x42"
                 ;;
                 #í
                 í)
-                output="$output\x08\x22"
+                output="$output\x08\x41"
                 ;;
-
 		#Alapertelmezett ag, akkor aktív ha sima ascii karakterrel megjelenitheto betut kap a case szerkezet
 		*)
 		output="$output${message:$i:1}"

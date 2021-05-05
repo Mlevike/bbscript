@@ -150,4 +150,6 @@ A program megíráshoz felhasznált források:
 
  - Alpha Sign Communications Protocol Rev. E protokoll leírás (https://alumni.media.mit.edu/~aggelos/papers/alphasign.pdf)
 
+ - Alpha Sign Communications Protocol Rev. F protokoll leírás (https://www.alpha-american.com/alpha-manuals/M-Protocol.pdf)
+
  - BetaBrite 1036 Programming Manual (https://www.manualslib.com/manual/1610476/Adaptive-Micro-Systems-Betabrite-1036.html)
