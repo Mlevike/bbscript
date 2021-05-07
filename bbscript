@@ -505,7 +505,15 @@ printf $color >> $port
 printf '\x1a' >> $port
 printf $font >> $port
 #Uzenet atkuldese
-printf $message >> $port
+#Szavakat szamolo valtozo letrehozasa
+szavak=1
+for var in $message
+do
+printf $var >> $port
+if [[ szavak != ${#message} ]]; then
+	printf ' ' >> $port
+fi
+done
 #Kommunikacio lezarasa
 printf '\x04' >> $port
 fi
