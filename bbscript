@@ -400,19 +400,19 @@ for (( i=0; i<${#message}; i++ )); do
                 ;;
                 #Ű
                 Ű)
-                output="$output\x08\x36"
+                output="$output\x08\x21"
                 ;;
                 #Ú
                 Ú)
-                output="$output\x08\x36"
+                output="$output\x08\x43"
                 ;;
                 #Ő
                 Ő)
-                output="$output\x08\x33"
+                output="$output\x08\x39"
                 ;;
                 #Ö
                 Ö)
-                output="$output\x08\x43"
+                output="$output\x08\x39"
                 ;;
                 #Ü
                 Ü)
@@ -424,7 +424,7 @@ for (( i=0; i<${#message}; i++ )); do
                 ;;
                 #Í
                 Í)
-                output="$output\x08\x41"
+                output="$output\x08\x5F"
                 ;;
 		#Kis betuk
 		#é
@@ -437,7 +437,7 @@ for (( i=0; i<${#message}; i++ )); do
                 ;;
                 #ű
                 ű)
-                output="$output\x08\x36"
+                output="$output\x08\x21"
                 ;;
                 #ú
                 ú)
@@ -445,11 +445,11 @@ for (( i=0; i<${#message}; i++ )); do
                 ;;
                 #ő
                 ő)
-                output="$output\x08\x33"
+                output="$output\x08\x34"
                 ;;
                 #ö
                 ö)
-                output="$output\x08\x43"
+                output="$output\x08\x34"
                 ;;
                 #ü
                 ü)
