@@ -1,6 +1,8 @@
 # bbscript
 
-bbscript - Egy egyszerű szkript szöveg BetaBrite 1036 típusú fényújságra küldéséhez. Ez a program a Széchenyi István Egyetem GKNB_MSTM028 tárgykódú Linux ismeretek tantárgyához készült.
+bbscript - Egy egyszerű szkript szöveg BetaBrite 1036 típusú fényújságra küldéséhez. 
+
+Ez a program a Széchenyi István Egyetem GKNB_MSTM028 tárgykódú Linux ismeretek tantárgyához készült.
 
 Szintaktika:
 
