@@ -486,21 +486,21 @@ printf '\x02' >> $port
 printf 'A' >> $port
 #Memoriarekesz megadasa
 printf 'A' >> $port
-#Animacio beallitasa
-if [[ $animation != '' ]]; then
-	printf '\x1b' >> $port
-	printf ' ' >> $port
-	echo $animation >> $port
-fi
-#Mod megadasa
-printf '\x1b' >> $port
-printf ' ' >> $port
-printf $mode >> $port
 #Sebesseg beallitasa
 printf $speed >> $port
 #Szin beallitasa
 printf '\x1c' >> $port
 printf $color >> $port
+#Animacio beallitasa
+if [[ $animation != '' ]]; then
+        printf '\x1b' >> $port
+        printf ' ' >> $port
+        echo $animation >> $port
+fi
+#Mod megadasa
+printf '\x1b' >> $port
+printf ' ' >> $port
+printf $mode >> $port
 #Betutipus beallitasa
 printf '\x1a' >> $port
 printf $font >> $port
